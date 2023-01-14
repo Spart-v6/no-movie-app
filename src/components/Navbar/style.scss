@@ -1,0 +1,24 @@
+.navbar-container{
+    display: flex;
+    justify-content: flex-start;
+    height: 5vh;
+    align-items: center;
+        
+    .navbar {
+        background: transparent;
+        display: flex;
+        gap: 3rem; 
+        a{
+            background: none;
+            color: #f6f4e6;
+            text-decoration: none;
+            font-size: 1em;
+            width: 80px;
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+        a:hover{
+            color:red
+        }
+    }
+}
