@@ -27,15 +27,18 @@ const MoviePage = () => {
         .catch((err) => console.error(err));
     }
 
+    const getTitles = (type: string | undefined) =>{ 
+        if(type && type === "top_rated") return "Top Rated";
+        if(type && type === "upcoming") return "Upcoming Titles";
+        else return "Popular Titles";
+    }
+
     return (
         <div className="movies-list">
-            <h2>{(type ? type: "popular").toUpperCase()}</h2>
-            <div>
-                {
-                    moviesList.map((m) => <Card movie={m}/> )
-                }
+            <h2>{getTitles(type)}</h2>
+            <div className="movies-map">
+                { moviesList.map((m) => <Card movie={m}/> ) }
             </div>
-
         </div>
     )
 }

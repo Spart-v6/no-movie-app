@@ -2,7 +2,6 @@ import React from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 import "./style.scss";
-import {motion} from "framer-motion";
 
 const Card = (movie: any) => {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -26,7 +25,7 @@ const Card = (movie: any) => {
           to={`/movie/${movie?.movie?.id}`}
           style={{ textDecoration: "none", color: "white" }}
         >
-          <motion.div className="cards">
+          <div className="cards">
             <img
               className="card-image"
               src={`https://image.tmdb.org/t/p/original${movie?.movie?.poster_path}`}
@@ -44,7 +43,7 @@ const Card = (movie: any) => {
                 {movie?.movie?.overview.slice(0, 118) + "..."}
               </div>
             </div>
-          </motion.div>
+          </div>
         </Link>
       )}
     </>

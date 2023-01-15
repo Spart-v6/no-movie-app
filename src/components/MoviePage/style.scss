@@ -1,0 +1,15 @@
+.movies-list{
+    padding: 5em;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+
+    h2{
+        color: white;
+        font-size: 3em;
+        padding-left: 40%;
+    }
+    .movies-map{
+        width: 90vw;
+    }
+}
