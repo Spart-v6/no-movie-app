@@ -5,8 +5,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import MoviePage from "../../components/MoviePage";
-
-const API_KEY = "4e44d9029b1270a757cddc766a1bcb63";
+import { AiFillStar } from "react-icons/ai";
+import { API_KEY, convertToReadableDate } from "../../common/everything";
 
 interface PopularMoviesProps {
   movie: PopularMoviesArrayType[];
@@ -49,9 +49,12 @@ const Home = () => {
                     {popularMovie?.original_title}
                   </div>
                   <div className="posterImage__runtime">
-                      {popularMovie?.release_date}
+                      {convertToReadableDate(popularMovie?.release_date)}
                       <br/>
-                      <span className="posterImage__rating">{popularMovie?.vote_average}</span>
+                      <span className="posterImage__rating">
+                        {popularMovie?.vote_average}
+                        <AiFillStar style={{background:"none"}}/>
+                      </span>
                   </div>
                   <div className="posterImage__desc">
                     {popularMovie?.overview}

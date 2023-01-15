@@ -3,8 +3,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "./style.scss";
 import { AiFillStar } from "react-icons/ai";
-
-const API_KEY = "4e44d9029b1270a757cddc766a1bcb63";
+import {
+    API_KEY,
+    convertMinutes,
+    convertToReadableDate,
+    getDecimalsWithoutRounding,
+} from "../../common/everything";
 
 interface GeneresArray {
     name: string;
@@ -47,16 +51,6 @@ const Movies = () => {
         .catch((err) => console.log(err));
     };
 
-    const convertMinutes = (time: number) => {
-        let h = Math.trunc(time / 60);
-        let m = time % 60;
-
-        let hDisplay = h > 0 ? h + (h === 1 ? " hour " : " hours ") : "";
-        let mDisplay = m > 0 ? m + (m === 1 ? " minute " : " minutes ") : "";
-
-        return hDisplay + mDisplay;
-    }
-
   return (
     <div className="movie-page">
         <div className="movie-picture">
@@ -70,11 +64,17 @@ const Movies = () => {
             </div>
             <div className="movie-right">
                 <div className="movie-highlights">
-                    <div className="movie-title"> {detailedMovies?.original_title} </div>
-                    <div className="movie-tagline"> {detailedMovies?.tagline} </div>
-                    <div className="movie-vote"> {detailedMovies?.vote_average} <AiFillStar style={{background:"none"}}/> </div>
-                    <div className="movie-runtime"> {convertMinutes(detailedMovies?.runtime as number)} </div>
-                    <div className="movie-release"> {detailedMovies?.release_date} </div>
+                    <div className="movie-title"> 
+                        <p> {detailedMovies?.original_title} </p>
+                    </div>
+                    <div className="movie-in-general">
+                        <div className="movie-tagline"> {detailedMovies?.tagline} </div>
+                        <div className="movie-vote"> {getDecimalsWithoutRounding(detailedMovies?.vote_average as string,1)} 
+                            <AiFillStar style={{background:"none"}}/> 
+                        </div>
+                        <div className="movie-runtime"> {convertMinutes(detailedMovies?.runtime as number)} </div>
+                        <div className="movie-release"> Released on {convertToReadableDate(detailedMovies?.release_date as string)} </div>
+                    </div>
                     <div className="movie-genres">
                         {
                             detailedMovies?.genres.map(genre => (
@@ -86,7 +86,8 @@ const Movies = () => {
                     </div>
                 </div>
                 <div className="movie-summary">
-                    {detailedMovies?.overview}
+                    <p>Summary</p>
+                    <span> {detailedMovies?.overview} </span>
                 </div>
             </div>
         </div>

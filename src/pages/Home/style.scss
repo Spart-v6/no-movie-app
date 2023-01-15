@@ -45,8 +45,9 @@
             background: none;
             
             .posterImage__rating {
-                margin-left: 3rem;
                 background: none;
+                display: flex;
+                align-items: center;
             }
         }
         .posterImage__desc {
