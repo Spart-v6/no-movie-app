@@ -9,37 +9,17 @@ import {
     convertToReadableDate,
     getDecimalsWithoutRounding,
 } from "../../common/everything";
-
-interface GeneresArray {
-    name: string;
-}
-
-interface ProductionCompaniesArray {
-    name: string;
-    logo_path: string;
-}
-
-type movieDetails = {
-    backdrop_path: string;
-    genres: Array<GeneresArray>;
-    homepage: string;
-    original_title: string;
-    overview: string
-    poster_path: string
-    production_companies: Array<ProductionCompaniesArray>;
-    release_date: string
-    runtime: number
-    tagline: string
-    vote_average: string
-}
+import { movieDetails } from "../../common";
 
 const Movies = () => {
     const [detailedMovies, setDetailedMovies] = React.useState<movieDetails>();
+    console.log(detailedMovies);
 
     const { id } = useParams();
 
     React.useEffect(() => {
         getMovieDetailedPage();
+        window.scrollTo(0,0);
     }, [id]);
 
     const getMovieDetailedPage = () => {
@@ -54,26 +34,34 @@ const Movies = () => {
   return (
     <div className="movie-page">
         <div className="movie-picture">
-            <img src={`https://image.tmdb.org/t/p/original${detailedMovies?.backdrop_path}`}/>
+            <img src={`https://image.tmdb.org/t/p/original${detailedMovies?.backdrop_path}`} alt="Unable to load image"/>
         </div>
         <div className="movie-details">
             <div className="movie-left">
                 <div className="movie-poster">
-                    <img src={`https://image.tmdb.org/t/p/original${detailedMovies?.poster_path}`}/>
+                    <img src={`https://image.tmdb.org/t/p/original${detailedMovies?.poster_path}`} alt="Unable to load image"/>
                 </div>
             </div>
             <div className="movie-right">
                 <div className="movie-highlights">
                     <div className="movie-title"> 
-                        <p> {detailedMovies?.original_title} </p>
+                        <p> {detailedMovies?.title} </p>
                     </div>
                     <div className="movie-in-general">
                         <div className="movie-tagline"> {detailedMovies?.tagline} </div>
-                        <div className="movie-vote"> {getDecimalsWithoutRounding(detailedMovies?.vote_average as string,1)} 
+                        <div className="movie-vote"> 
+                            {getDecimalsWithoutRounding(detailedMovies?.vote_average as string,1)} 
                             <AiFillStar style={{background:"none"}}/> 
                         </div>
                         <div className="movie-runtime"> {convertMinutes(detailedMovies?.runtime as number)} </div>
-                        <div className="movie-release"> Released on {convertToReadableDate(detailedMovies?.release_date as string)} </div>
+                        <div className="movie-release"> 
+                            <span style={{background:"none"}}>
+                                {
+                                    detailedMovies?.release_date &&
+                                    `Released on ${convertToReadableDate(detailedMovies?.release_date as string)} `
+                                }
+                            </span>
+                        </div>
                     </div>
                     <div className="movie-genres">
                         {

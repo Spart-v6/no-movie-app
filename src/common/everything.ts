@@ -17,6 +17,7 @@ export const getDecimalsWithoutRounding = (value: string, numberOfDecimals: numb
 };
 
 export const convertToReadableDate = (val: string) => {
+    if(val.length === 0) return;
     var d = new Date(val);
     return d.toLocaleDateString(navigator.languages,{day:"numeric", month:"long", year: "numeric"});
 }

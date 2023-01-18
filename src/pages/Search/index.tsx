@@ -14,9 +14,6 @@ const Search = () => {
         .then(res => setSearchResults(res.data.results))
         .catch(err => console.log(err));
     },[search])
-    
-    console.log(searchResults);
-    
 
     return (
         <div className="search">
@@ -26,12 +23,12 @@ const Search = () => {
                     ?
                     <>
                         <div>
-                            <span> Nothing found for {search}. <br/> Kindly adjust your search </span>
+                            <span style={{fontSize:"2em"}}> Nothing found for {search}. <br/> Kindly adjust your search </span>
                         </div>
                     </>
                     :
                     <>
-                        <span> Showing results for {search} </span>
+                        <span style={{fontSize:"2em", margin: "0em 0.3em"}}> Showing results for {search} </span>
                         <div>
                             { searchResults.map(m => <Card movie={m}/>) }
                         </div>

@@ -6,9 +6,10 @@ import { useParams } from 'react-router-dom';
 import {FiExternalLink} from "react-icons/fi"
 import { Link } from 'react-router-dom';
 import { API_KEY } from '../../common/everything';
+import { MoviesArrayType } from '../../common';
 
 const MoviePage = () => {
-    const [moviesList, setMoviesList] = React.useState([]);
+    const [moviesList, setMoviesList] = React.useState<MoviesArrayType[]>([]);
     const [popularMovies, setPopularMovies] = React.useState([]);
     const [topRatedMovies, setTopRatedMovies] = React.useState([]);
     const [upcomingMovies, setUpcomingMovies] = React.useState([]);

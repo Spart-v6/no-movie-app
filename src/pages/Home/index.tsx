@@ -7,24 +7,10 @@ import { Link } from "react-router-dom";
 import MoviePage from "../../components/MoviePage";
 import { AiFillStar } from "react-icons/ai";
 import { API_KEY, convertToReadableDate } from "../../common/everything";
-
-interface PopularMoviesProps {
-  movie: PopularMoviesArrayType[];
-}
-
-interface PopularMoviesArrayType {
-  original_title: string;
-  backdrop_path: string;
-  overview: string;
-  poster_path: string;
-  release_date: string;
-  id: number;
-  vote_average: number;
-}
+import {MoviesArrayType} from "../../common";
 
 const Home = () => {
-
-  const [popularMovies, setPopularMovies] = React.useState<Array<PopularMoviesArrayType>>([]);
+  const [popularMovies, setPopularMovies] = React.useState<MoviesArrayType[]>([]);
 
   React.useEffect(() => {
     axios
@@ -33,36 +19,45 @@ const Home = () => {
       )
       .then((res) => setPopularMovies(res.data.results))
       .catch((err) => console.error(err));
-  }, []);
+  }, []);  
 
-  return(
+  return (
     <div className="poster">
-      <Carousel showThumbs={false} autoPlay={true} transitionTime={3} showStatus={false} infiniteLoop>
-          {
-            popularMovies.map((popularMovie) => (
-              <Link to={`/movie/${popularMovie?.id}`} className="linkMovie" key={popularMovie.id}>
-              <div className="posterName">
-                  <img src={`https://image.tmdb.org/t/p/original${popularMovie?.backdrop_path}`}/>
+      <Carousel
+        showThumbs={false}
+        autoPlay={true}
+        transitionTime={3}
+        showStatus={false}
+        infiniteLoop
+      >
+        {popularMovies.map((popularMovie) => (
+          <Link
+            to={`/movie/${popularMovie?.id}`}
+            className="linkMovie"
+            key={popularMovie.id}
+          >
+            <div className="posterName">
+              <img
+                src={`https://image.tmdb.org/t/p/original${popularMovie?.backdrop_path}`}
+                alt="Unable to load image"
+              />
+            </div>
+            <div className="posterImage__overlay">
+              <div className="posterImage__title">
+                {popularMovie?.title}
               </div>
-              <div className="posterImage__overlay">
-                  <div className="posterImage__title">
-                    {popularMovie?.original_title}
-                  </div>
-                  <div className="posterImage__runtime">
-                      {convertToReadableDate(popularMovie?.release_date)}
-                      <br/>
-                      <span className="posterImage__rating">
-                        {popularMovie?.vote_average}
-                        <AiFillStar style={{background:"none"}}/>
-                      </span>
-                  </div>
-                  <div className="posterImage__desc">
-                    {popularMovie?.overview}
-                  </div>
+              <div className="posterImage__runtime">
+                {convertToReadableDate(popularMovie?.release_date)}
+                <br />
+                <span className="posterImage__rating">
+                  {popularMovie?.vote_average}
+                  <AiFillStar style={{ background: "none" }} />
+                </span>
               </div>
-              </Link>
-            ))
-          }
+              <div className="posterImage__desc">{popularMovie?.overview}</div>
+            </div>
+          </Link>
+        ))}
       </Carousel>
       <MoviePage />
     </div>

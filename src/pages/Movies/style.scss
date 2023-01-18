@@ -14,6 +14,7 @@
 
         img{
             width: 90%;
+            color: white;
             height: 500px;
             object-fit:cover;
             object-position: 0 35%;
@@ -34,8 +35,10 @@
             background: transparent;
             .movie-poster{
                 background: transparent;
+                width: 300px;
                 img{
                     width:300px;
+                    color: white;
                     border-radius: 10px;
                     box-shadow: #000000db 0px 0px 20px 2px;
                 }
@@ -52,6 +55,7 @@
             .movie-highlights{
                 display: flex;
                 flex-direction: column;
+                height: 28vh;
                 gap: 0.8rem;
                 background-color: transparent;
                 .movie-title {  
@@ -101,9 +105,13 @@
         }
     }
     .movie-summary{
+        background: none;
         p{
             font-size: 2rem;
+            background: none;
         }
-        background: none;
+        span{
+            background: none;
+        }
     }
 }
