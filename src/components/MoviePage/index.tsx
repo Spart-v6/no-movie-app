@@ -13,6 +13,7 @@ const MoviePage = () => {
     const [popularMovies, setPopularMovies] = React.useState([]);
     const [topRatedMovies, setTopRatedMovies] = React.useState([]);
     const [upcomingMovies, setUpcomingMovies] = React.useState([]);
+    const [error, setError] = React.useState(false);
 
     const { type } = useParams();
 
@@ -23,18 +24,18 @@ const MoviePage = () => {
         if(type === undefined){
             axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US`)
             .then((res) => setPopularMovies(res.data.results))
-            .catch((err) => console.error(err));
+            .catch(() => setError(true));
             axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`)
             .then((res) => setTopRatedMovies(res.data.results))
-            .catch((err) => console.error(err));
+            .catch(() => setError(true));
             axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US`)
             .then((res) => setUpcomingMovies(res.data.results))
-            .catch((err) => console.error(err));
+            .catch(() => setError(true));
         }
         else{
             axios.get(`https://api.themoviedb.org/3/movie/${type && type}?api_key=${API_KEY}&language=en-US`)
             .then((res) => setMoviesList(res.data.results))
-            .catch((err) => console.error(err));
+            .catch(() => setError(true));
         }
     }
 
@@ -60,7 +61,7 @@ const MoviePage = () => {
                                 <FiExternalLink style={{color:"white"}}/>
                             </Link>
                         </div>
-                        <div> { popularMovies.slice(0,6).map((m) => <Card movie={m}/> ) } </div>
+                        <div> { error ? <div style={{color:"white", fontStyle:"italic"}}> Unable to load data, please try again later </div> : popularMovies.slice(0,6).map((m) => <Card movie={m}/> ) } </div>
                     </div>
                     <div className="undefined-movies-map">
                     <div style={{display:"flex", justifyContent:'center', alignItems:'center', gap:"1rem"}}>
@@ -72,7 +73,7 @@ const MoviePage = () => {
                                 <FiExternalLink style={{color:"white"}}/>
                             </Link>
                         </div>
-                        <div> { topRatedMovies.slice(0,6).map((m) => <Card movie={m}/> ) } </div>
+                        <div> { error ? <div style={{color:"white", fontStyle:"italic"}}> Unable to load data, please try again later </div> : topRatedMovies.slice(0,6).map((m) => <Card movie={m}/> ) } </div>
                     </div>
                     <div className="undefined-movies-map">
                     <div style={{display:"flex", justifyContent:'center', alignItems:'center', gap:"1rem"}}>
@@ -84,14 +85,14 @@ const MoviePage = () => {
                                 <FiExternalLink style={{color:"white"}}/>
                             </Link>
                         </div>
-                        <div> { upcomingMovies.slice(0,6).map((m) => <Card movie={m}/> ) } </div>
+                        <div> { error ? <div style={{color:"white", fontStyle:"italic"}}> Unable to load data, please try again later </div> : upcomingMovies.slice(0,6).map((m) => <Card movie={m}/> ) } </div>
                     </div>
                 </>
                 :
                 <>
                     <h2>{getTitles(type)}</h2>
                     <div className="movies-map">
-                        { moviesList.map((m) => <Card movie={m}/> ) }
+                        { error ? <div style={{color:"white", fontStyle:"italic"}}> Unable to load data, please try again later </div> : moviesList.map((m) => <Card movie={m}/> ) }
                     </div>
                 </>
             }

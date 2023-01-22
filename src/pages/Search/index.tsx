@@ -23,7 +23,7 @@ const Search = () => {
                     ?
                     <>
                         <div>
-                            <span style={{fontSize:"2em"}}> Nothing found for {search}. <br/> Kindly adjust your search </span>
+                            <span style={{fontSize:"2em"}}> Nothing found for {search}. </span>
                         </div>
                     </>
                     :

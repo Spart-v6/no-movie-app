@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.scss";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -16,29 +16,29 @@ const Navbar = () => {
     <div className="navbar-container">
       <nav className="navbar">
         <div className="logo">
-          <Link to="/"> NoMovie </Link>
+          <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'links')}> noMovie </NavLink>
         </div>
         <div className="menu">
           <ul>
             <li>
-              <Link to="/movies/popular"> Popular </Link>
+              <NavLink to="/movies/popular" className={({ isActive }) => (isActive ? 'active' : 'links')}> Popular </NavLink>
             </li>
             <li>
-              <Link to="/movies/top_rated"> Top rated </Link>
+              <NavLink to="/movies/top_rated" className={({ isActive }) => (isActive ? 'active' : 'links')}> Top rated </NavLink>
             </li>
             <li>
-              <Link to="/movies/upcoming"> Upcoming </Link>
+              <NavLink to="/movies/upcoming" className={({ isActive }) => (isActive ? 'active' : 'links')}> Upcoming </NavLink>
             </li>
           </ul>
         </div>
         <div className="search">
-        <input
-            type="text"
-            placeholder=" "
-            value={searchMovie}
-            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-            onChange={(e) => setSearchMovie(e.target.value)}
-          />
+          <input
+              type="text"
+              placeholder=" "
+              value={searchMovie}
+              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+              onChange={(e) => setSearchMovie(e.target.value)}
+            />
             <div>
                 <svg>
                     <use xlinkHref="#path"/>

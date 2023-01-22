@@ -1,9 +1,16 @@
+.carousel .control-prev.control-arrow:before{
+    background: none;
+}
+.carousel .control-next.control-arrow:before{
+    background: none;
+}
+
 .linkMovie{
     text-decoration: none;
     color: white;
 
     .posterName{
-        height: 600px;
+        height: 79.6vh;
 
         img{
             color: white;
@@ -16,7 +23,7 @@
     .posterImage__overlay {
         position: absolute;
         padding: 5rem;
-        bottom: 0px;
+        bottom: 0rem;
         height: 70%;
         display: flex;
         flex-direction: column;

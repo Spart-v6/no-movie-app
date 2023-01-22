@@ -6,5 +6,6 @@
   box-sizing: border-box;
   background-color: #0c0c0c;
   font-family: "Poppins";
+  -webkit-font-smoothing: antialiased;
 }
 
