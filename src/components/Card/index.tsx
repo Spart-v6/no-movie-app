@@ -32,16 +32,16 @@ const Card = (movie: any) => {
               src={`https://image.tmdb.org/t/p/original${movie?.movie?.poster_path}`}
               alt="unable to load image"
             />
-            <div className="cards__overlay">
-              <div className="card__title">{movie?.movie?.title}</div>
-              <div className="card__runtime">
+            <div className="cards_overlay">
+              <div className="card_title">{movie?.movie?.title}</div>
+              <div className="card_runtime">
                 {movie?.movie?.release_date}
-                <span className="card__rating">
+                <span className="card_rating">
                   {movie?.movie?.vote_average}
                   <AiFillStar style={{ background: "none" }} />
                 </span>
               </div>
-              <div className="card__description">
+              <div className="card_description">
                 {movie?.movie?.overview.slice(0, 110) + "..."}
               </div>
             </div>

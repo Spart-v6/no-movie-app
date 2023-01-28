@@ -7,10 +7,12 @@ import { Link } from "react-router-dom";
 import MoviePage from "../../components/MoviePage";
 import { AiFillStar } from "react-icons/ai";
 import { API_KEY, convertToReadableDate } from "../../common/everything";
-import {MoviesArrayType} from "../../common";
+import { MoviesArrayType } from "../../common";
 
 const Home = () => {
-  const [popularMovies, setPopularMovies] = React.useState<MoviesArrayType[]>([]);  
+  const [popularMovies, setPopularMovies] = React.useState<MoviesArrayType[]>(
+    []
+  );
 
   React.useEffect(() => {
     axios
@@ -23,7 +25,7 @@ const Home = () => {
 
   return (
     <div className="poster">
-      { popularMovies.length > 0 &&
+      {popularMovies.length > 0 && (
         <Carousel
           showThumbs={false}
           autoPlay={true}
@@ -43,24 +45,22 @@ const Home = () => {
                   alt="Unable to load image"
                 />
               </div>
-              <div className="posterImage__overlay">
-                <div className="posterImage__title">
-                  {popularMovie?.title}
-                </div>
-                <div className="posterImage__runtime">
+              <div className="posterImage_overlay">
+                <div className="posterImage_title">{popularMovie?.title}</div>
+                <div className="posterImage_runtime">
                   {convertToReadableDate(popularMovie?.release_date)}
                   <br />
-                  <span className="posterImage__rating">
+                  <span className="posterImage_rating">
                     {popularMovie?.vote_average}
                     <AiFillStar style={{ background: "none" }} />
                   </span>
                 </div>
-                <div className="posterImage__desc">{popularMovie?.overview}</div>
+                <div className="posterImage_desc">{popularMovie?.overview}</div>
               </div>
             </Link>
           ))}
         </Carousel>
-      }
+      )}
       <MoviePage />
     </div>
   );

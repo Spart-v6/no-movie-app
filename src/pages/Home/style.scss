@@ -1,75 +1,71 @@
-.carousel .control-prev.control-arrow:before{
-    background: none;
+.carousel .control-prev.control-arrow:before {
+  background: none;
 }
-.carousel .control-next.control-arrow:before{
-    background: none;
+.carousel .control-next.control-arrow:before {
+  background: none;
 }
 
-.linkMovie{
-    text-decoration: none;
-    color: white;
+.linkMovie {
+  text-decoration: none;
+  color: white;
 
-    .posterName{
-        height: 79.6vh;
+  .posterName {
+    height: 79.6vh;
 
-        img{
-            color: white;
-            margin: auto;
-            display: block;
-            width: 100%;
-        }
+    img {
+      color: white;
+      margin: auto;
+      display: block;
+      width: 100%;
     }
-            
-    .posterImage__overlay {
-        position: absolute;
-        padding: 5rem;
-        bottom: 0rem;
-        height: 70%;
+  }
+
+  .posterImage_overlay {
+    position: absolute;
+    padding: 5rem;
+    bottom: 0rem;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-image: linear-gradient(#0c0c0c00, #0c0c0c);
+    opacity: 1;
+    transition: opacity 0.3s;
+
+    :hover {
+      opacity: 1;
+    }
+
+    .posterImage_title {
+      font-weight: 900;
+      font-size: 4rem;
+      margin-bottom: 0.4rem;
+      text-align: left;
+      background: none;
+    }
+
+    .posterImage_runtime {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      background: none;
+
+      .posterImage_rating {
+        background: none;
         display: flex;
-        flex-direction: column;
-        background: transparent;
-        width: 100%;
-        justify-content: flex-end;
-        align-items: flex-start;
-        background-image: linear-gradient(#0c0c0c00, #0c0c0c);
-        opacity: 1;
-        transition: opacity .3s;
-
-        :hover{
-            opacity: 1;
-        }
-
-        .posterImage__title {
-            font-weight: 900;
-            font-size: 4rem;
-            margin-bottom: 0.4rem;
-            text-align: left;
-            background: none;
-        }
-        
-        .posterImage__runtime {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: none;
-            
-            .posterImage__rating {
-                background: none;
-                display: flex;
-                align-items: center;
-            }
-        }
-        .posterImage__desc {
-            font-style: italic;
-            background: none;
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-            display: flex;
-            text-align: left;
-            width: 50%;
-        }
-    }  
-
-
-
-
+        align-items: center;
+      }
+    }
+    .posterImage_desc {
+      font-style: italic;
+      background: none;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      display: flex;
+      text-align: left;
+      width: 50%;
+    }
+  }
 }
