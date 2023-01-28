@@ -5,8 +5,8 @@ import "./style.scss";
 import { useParams } from 'react-router-dom';
 import {FiExternalLink} from "react-icons/fi"
 import { Link } from 'react-router-dom';
-import { API_KEY } from '../../common/everything';
 import { MoviesArrayType } from '../../common';
+import API_KEY from "../../common/apiKey";
 
 const MoviePage = () => {
     const [moviesList, setMoviesList] = React.useState<MoviesArrayType[]>([]);

@@ -21,5 +21,3 @@ export const convertToReadableDate = (val: string) => {
     var d = new Date(val);
     return d.toLocaleDateString(navigator.languages,{day:"numeric", month:"long", year: "numeric"});
 }
-
-export const API_KEY = "4e44d9029b1270a757cddc766a1bcb63";

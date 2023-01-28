@@ -2,8 +2,8 @@ import React from 'react';
 import "./style.scss";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { API_KEY } from '../../common/everything';
 import Card from '../../components/Card';
+import API_KEY from "../../common/apiKey";
 
 const Search = () => {
     const [searchResults, setSearchResults] = React.useState([]);

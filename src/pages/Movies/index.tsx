@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom";
 import "./style.scss";
 import { AiFillStar } from "react-icons/ai";
 import {
-    API_KEY,
     convertMinutes,
     convertToReadableDate,
     getDecimalsWithoutRounding,
 } from "../../common/everything";
 import { movieDetails } from "../../common";
+import API_KEY from "../../common/apiKey";
 
 const Movies = () => {
     const [detailedMovies, setDetailedMovies] = React.useState<movieDetails>();
@@ -87,7 +87,7 @@ const Movies = () => {
                     </div>
                 </div>
             </div>
-            <div className="helpful-links">
+            {/* <div className="helpful-links">
                 <span>Production Companies</span>
                 {
                     detailedMovies?.production_companies.map(comp => (
@@ -96,7 +96,7 @@ const Movies = () => {
                         </div>
                     ))
                 }
-            </div>
+            </div> */}
         </>
         }
 

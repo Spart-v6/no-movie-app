@@ -6,8 +6,9 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import MoviePage from "../../components/MoviePage";
 import { AiFillStar } from "react-icons/ai";
-import { API_KEY, convertToReadableDate } from "../../common/everything";
+import { convertToReadableDate } from "../../common/everything";
 import { MoviesArrayType } from "../../common";
+import API_KEY from "../../common/apiKey";
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = React.useState<MoviesArrayType[]>(
